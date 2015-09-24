@@ -21,6 +21,7 @@ class MazeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()        
+        
         mazeController = MazeController(plistFile: "Maze1", mazeView: mazeView)
     }
     
@@ -30,7 +31,10 @@ class MazeViewController: UIViewController {
             print("Error: Maze contains no rows or columns!")
             return
         }
-        addSimpleRobot()
+        
+        addControlConter()
+        addComplexRobot()
+        //addSimpleRobot()
         addStar()
     }
 
@@ -54,17 +58,22 @@ class MazeViewController: UIViewController {
         }
     }
     
-    func addSimpleRobot() {
+    func addControlConter() {
         let controlCenter = ControlCenter()
+        controlCenter.cellsInTheGrid = mazeController.cellModels
+        mazeController.controlCenter = controlCenter
+    }
+    
+    
+    func addSimpleRobot() {
         let simpleRobot = SimpleRobotObject(location: MazeLocation(x: 3, y: 2), direction: MazeDirection.Up, imagePath: "robot.png")
         mazeController.addMazeObject(simpleRobot)
-        controlCenter.moveSimpleRobot(simpleRobot)
+        mazeController.controlCenter.moveSimpleRobot(simpleRobot)
     }
     
     func addComplexRobot() {
-        let controlCenter = ControlCenter()
         let complexRobot = ComplexRobotObject(location: MazeLocation(x: 3, y: 2), direction: MazeDirection.Up)
         mazeController.addMazeObject(complexRobot)
-        controlCenter.moveComplexRobot(complexRobot)
+        mazeController.controlCenter.moveComplexRobot(complexRobot)
     }
 }

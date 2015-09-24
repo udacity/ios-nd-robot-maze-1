@@ -13,8 +13,8 @@ import UIKit
 class MazeController {
     
     // MARK: Properties
-    
-    private var cellModels: [[MazeCellModel]]!
+    var controlCenter: ControlCenter!
+    var cellModels: [[MazeCellModel]]!
     var mazeView: MazeView!
     var mazeObjects = [MazeObject]()
     let moveDuration = 0.6
@@ -96,6 +96,7 @@ class MazeController {
         let move = operation.move
         let object = operation.object
         
+        // This method is called after the robot completes a move or rotates.
         func moveObjectToLocationCompletion(operation: MazeMoveOperation, object: MazeObject, move: MazeMove) {
             operation.markAsFinished()
             self.didPerformMove(object, move: move)
@@ -198,19 +199,22 @@ class MazeController {
     
     // MARK: Collision Checking
     
+    // Here's where we notify the control center that the move is complete.
     func didPerformMove(object: MazeObject, move: MazeMove) {
         for mazeObject in mazeObjects {
             if let mazeObject = mazeObject as? MazeCollidable {
                 if mazeObject.view != object.view && object.location == mazeObject.location {
                     mazeObject.performActionOnCollision(object)
                     break
+                } else {
+                    self.controlCenter.lastMoveFinished(object as! ComplexRobotObject)
                 }
             }
         }
     }
     
     // MARK: Convenience
-    
+     
     private func objectCanMoveToLocation(object: MazeObject, move: MazeMove) -> Bool {
         
         let cell = cellModels[object.location.y][object.location.x]
