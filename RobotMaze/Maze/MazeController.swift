@@ -207,7 +207,7 @@ class MazeController {
                     mazeObject.performActionOnCollision(object)
                     break
                 } else {
-                    self.controlCenter.lastMoveFinished(object as! ComplexRobotObject)
+                    self.controlCenter.previousMoveIsFinished(object as! ComplexRobotObject)
                 }
             }
         }

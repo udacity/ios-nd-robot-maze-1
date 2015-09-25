@@ -12,9 +12,12 @@ class ControlCenter {
     var cellsInTheGrid: [[MazeCellModel]]!
     
     func moveComplexRobot(robot: ComplexRobotObject) {
-        chooseDirection(robot)
+        if !self.isWall(robot) {
+            robot.move()
+        } else {
+            self.rotateRightOrLeft(robot)
+        }
     }
-    
     
     func isWall(robot: MazeObject) -> Bool {
         
@@ -29,7 +32,7 @@ class ControlCenter {
                 isWall = true
             }
         case .Down:
-            if cell.bottom{
+            if cell.bottom {
                 print("can't move down")
                 isWall = true
             }
@@ -46,15 +49,6 @@ class ControlCenter {
         }
         return isWall
     }
-   
-    func chooseDirection(robot: ComplexRobotObject) {
-        
-        if !self.isWall(robot) {
-            robot.move()
-        } else {
-            rotateRightOrLeft(robot)
-        }
-    }
     
     func rotateRightOrLeft(robot: ComplexRobotObject) {
         let randomNumber = arc4random() % 2
@@ -65,7 +59,18 @@ class ControlCenter {
         }
     }
     
-    func lastMoveFinished(robot: ComplexRobotObject) {
-        self.chooseDirection(robot)
+    func moveOrRotate(robot: ComplexRobotObject) {
+        let randomNumber = arc4random() % 2
+        if randomNumber == 0 {
+            robot.move()
+        } else {
+            self.rotateRightOrLeft(robot)
+        }
     }
+    
+    
+    func previousMoveIsFinished(robot: ComplexRobotObject) {
+            self.moveComplexRobot(robot)
+    }
+
 }
