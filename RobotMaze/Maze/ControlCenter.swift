@@ -12,65 +12,158 @@ class ControlCenter {
     var cellsInTheGrid: [[MazeCellModel]]!
     
     func moveComplexRobot(robot: ComplexRobotObject) {
-        if !self.isWall(robot) {
+        
+        let wallInfo = self.checkWalls(robot)
+        
+        let isJunction = self.isJunction(wallInfo.numberOfWalls)
+        let isWall = self.isWall(robot, direction: robot.direction)
+        let isDeadEnd =  self.isDeadEnd(wallInfo.numberOfWalls)
+        
+        // Dead End
+        if isDeadEnd {
+            robot.rotateRight()
+            robot.rotateRight()
+        }
+        
+        // Junction: Two types
+        // Type 1: Junction with a wall in front of you
+        if isJunction && isWall {
+            // don't go back the way you came
+            // decision: right or left
+            randomlyRotateRightOrLeft(robot)
+        }
+        
+        // Type 2: Junction with an option to go straight or turn
+        if isJunction && !isWall {
+            // don't go back the way you came
+            // decision: straight or rotate
+            moveOrRotate(robot, wallInfo: wallInfo)
+        }
+        
+        // Turn
+        if !isJunction && isWall && !isDeadEnd {
+            // turn where there isn't a wall
+            turnTowardClearPath(robot, wallInfo: wallInfo)
+        }
+        
+        // Straightaway
+        if !isWall && !isJunction {
             robot.move()
-        } else {
-            self.rotateRightOrLeft(robot)
         }
     }
     
-    func isWall(robot: MazeObject) -> Bool {
+    func isWall(robot: ComplexRobotObject, direction: MazeDirection) -> Bool {
         
         let cell = self.cellsInTheGrid[robot.location.y][robot.location.x]
         
         var isWall: Bool = false
         
-        switch(robot.direction) {
+        switch(direction) {
         case .Up:
             if cell.top{
-                print("can't move up")
                 isWall = true
             }
         case .Down:
             if cell.bottom {
-                print("can't move down")
                 isWall = true
             }
         case .Left:
             if cell.left {
-                print("can't move left")
                 isWall = true
             }
         case .Right:
             if cell.right {
-                print("can't move right")
                 isWall = true
             }
         }
         return isWall
     }
     
-    func rotateRightOrLeft(robot: ComplexRobotObject) {
-        let randomNumber = arc4random() % 2
-        if randomNumber == 0 {
-            robot.rotateLeft()
+    func isJunction(numberOfWalls: Int) -> Bool {
+        if numberOfWalls == 1 {
+            return true
         } else {
-            robot.rotateRight()
+            return false
         }
     }
     
-    func moveOrRotate(robot: ComplexRobotObject) {
+    func isDeadEnd(numberOfWalls: Int) -> Bool {
+        if numberOfWalls == 3 {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    func checkWalls(robot:ComplexRobotObject) -> (up: Bool, right: Bool, down: Bool, left: Bool, numberOfWalls: Int) {
+        var numberOfWalls = 0
+        var direction = MazeDirection(rawValue: 0)
+        
+        // check up
+        let isWallUp = isWall(robot, direction: direction!)
+        if isWallUp {
+            numberOfWalls++
+        }
+        
+        // check right
+        direction = .Right
+        let isWallRight = isWall(robot, direction: direction!)
+        if isWallRight {
+            numberOfWalls++
+        }
+
+        // check down
+        direction = .Down
+        let isWallDown = isWall(robot, direction:direction!)
+        if isWallDown {
+            numberOfWalls++
+        }
+        
+        // check left
+        direction = .Left
+        let isWallLeft = isWall(robot, direction:direction!)
+        if isWallLeft {
+           numberOfWalls++
+        }
+        
+        return (isWallUp, isWallRight, isWallDown, isWallLeft, numberOfWalls)
+    }
+    
+    func turnTowardClearPath (robot: ComplexRobotObject, wallInfo: (up: Bool, right: Bool, down: Bool, left: Bool, numberOfWalls: Int)) {
+        
+        if robot.direction == .Up && wallInfo.left {
+            robot.rotateRight()
+        } else if robot.direction == .Right && wallInfo.up {
+            robot.rotateRight()
+        } else if robot.direction == .Down && wallInfo.right {
+            robot.rotateRight()
+        } else if robot.direction == .Left && wallInfo.down {
+            robot.rotateRight()
+        } else {
+            robot.rotateLeft()
+        }
+    }
+    
+    func randomlyRotateRightOrLeft(robot: ComplexRobotObject) {
+        let randomNumber = arc4random() % 2
+        if randomNumber == 0 {
+            robot.rotateLeft()
+        } else if randomNumber == 1 {
+            robot.rotateRight()
+        }
+    }
+
+    func moveOrRotate(robot: ComplexRobotObject, wallInfo:(up: Bool, right: Bool, down: Bool, left: Bool, numberOfWalls: Int) ) {
         let randomNumber = arc4random() % 2
         if randomNumber == 0 {
             robot.move()
         } else {
-            self.rotateRightOrLeft(robot)
+           turnTowardClearPath(robot, wallInfo: wallInfo)
         }
     }
-    
     
     func previousMoveIsFinished(robot: ComplexRobotObject) {
             self.moveComplexRobot(robot)
     }
-
+    
 }
