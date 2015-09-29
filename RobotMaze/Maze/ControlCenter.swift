@@ -41,7 +41,7 @@ class ControlCenter {
         if isThreeWayJunction && !isWall {
             // don't go back the way you came
             // decision: straight or rotate
-            moveOrRotate(robot, wallInfo: wallInfo)
+            continueStraightOrRotate(robot, wallInfo: wallInfo)
         }
         
         // TwoWayPath: Turn
@@ -156,8 +156,8 @@ class ControlCenter {
         }
     }
 
-    func moveOrRotate(robot: ComplexRobotObject, wallInfo:(up: Bool, right: Bool, down: Bool, left: Bool, numberOfWalls: Int) ) {
-        let randomNumber = arc4random() % 3
+    func continueStraightOrRotate(robot: ComplexRobotObject, wallInfo:(up: Bool, right: Bool, down: Bool, left: Bool, numberOfWalls: Int) ) {
+        let randomNumber = arc4random() % 2
         if randomNumber == 0 {
             robot.move()
         } else {
