@@ -72,7 +72,10 @@ class MazeViewController: UIViewController {
 //    }
     
     func addComplexRobot() {
-        let complexRobot = ComplexRobotObject(location: MazeLocation(x: 3, y: 2), direction: MazeDirection.Up)
+        let randomx = Int(arc4random() % 7)
+        let randomy = Int(arc4random() % 5)
+        
+        let complexRobot = ComplexRobotObject(location: MazeLocation(x: randomx, y: randomy), direction: MazeDirection.Up)
         mazeController.addMazeObject(complexRobot)
         mazeController.controlCenter.moveComplexRobot(complexRobot)
     }

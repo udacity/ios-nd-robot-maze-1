@@ -17,7 +17,7 @@ class MazeController {
     var cellModels: [[MazeCellModel]]!
     var mazeView: MazeView!
     var mazeObjects = [MazeObject]()
-    let moveDuration = 0.6
+    let moveDuration = 2.0
     
     // MARK: Initializers
     

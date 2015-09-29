@@ -21,8 +21,11 @@ class ControlCenter {
         
         // Dead End
         if isDeadEnd {
-            robot.rotateRight()
-            robot.rotateRight()
+            if isWall {
+                robot.rotateRight()
+            } else {
+                robot.move()
+            }
         }
         
         // Junction: Two types
@@ -97,9 +100,9 @@ class ControlCenter {
 
     func checkWalls(robot:ComplexRobotObject) -> (up: Bool, right: Bool, down: Bool, left: Bool, numberOfWalls: Int) {
         var numberOfWalls = 0
-        var direction = MazeDirection(rawValue: 0)
         
         // check up
+        var direction = MazeDirection(rawValue: 0)
         let isWallUp = isWall(robot, direction: direction!)
         if isWallUp {
             numberOfWalls++
@@ -154,7 +157,7 @@ class ControlCenter {
     }
 
     func moveOrRotate(robot: ComplexRobotObject, wallInfo:(up: Bool, right: Bool, down: Bool, left: Bool, numberOfWalls: Int) ) {
-        let randomNumber = arc4random() % 2
+        let randomNumber = arc4random() % 3
         if randomNumber == 0 {
             robot.move()
         } else {
