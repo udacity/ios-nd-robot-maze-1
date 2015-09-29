@@ -15,9 +15,10 @@ class ControlCenter {
         
         let wallInfo = self.checkWalls(robot)
         
-        let isJunction = self.isJunction(wallInfo.numberOfWalls)
+        let isThreeWayJunction = self.isJunction(wallInfo.numberOfWalls)
         let isWall = self.isWall(robot, direction: robot.direction)
         let isDeadEnd =  self.isDeadEnd(wallInfo.numberOfWalls)
+        let isTwoWayPath = !isDeadEnd && !isThreeWayJunction
         
         // Dead End
         if isDeadEnd {
@@ -30,27 +31,26 @@ class ControlCenter {
         
         // Junction: Two types
         // Type 1: Junction with a wall in front of you
-        if isJunction && isWall {
+        if isThreeWayJunction && isWall {
             // don't go back the way you came
             // decision: right or left
             randomlyRotateRightOrLeft(robot)
         }
         
         // Type 2: Junction with an option to go straight or turn
-        if isJunction && !isWall {
+        if isThreeWayJunction && !isWall {
             // don't go back the way you came
             // decision: straight or rotate
             moveOrRotate(robot, wallInfo: wallInfo)
         }
         
-        // Turn
-        if !isJunction && isWall && !isDeadEnd {
-            // turn where there isn't a wall
+        // TwoWayPath: Turn
+        if isTwoWayPath && isWall {
             turnTowardClearPath(robot, wallInfo: wallInfo)
         }
         
-        // Straightaway
-        if !isWall && !isJunction {
+        // TwoWayPath: Straightaway
+        if isTwoWayPath && !isWall {
             robot.move()
         }
     }
