@@ -38,21 +38,26 @@ class ControlCenter {
         }
         
         // Type 2: Junction with an option to go straight or turn
-        if isThreeWayJunction && !isWall {
+        else if isThreeWayJunction && !isWall {
             // don't go back the way you came
             // decision: straight or rotate
             continueStraightOrRotate(robot, wallInfo: wallInfo)
         }
         
         // TwoWayPath: Turn
-        if isTwoWayPath && isWall {
+        else if isTwoWayPath && isWall {
             turnTowardClearPath(robot, wallInfo: wallInfo)
         }
         
         // TwoWayPath: Straightaway
-        if isTwoWayPath && !isWall {
+        else if isTwoWayPath && !isWall {
             robot.move()
         }
+        
+        else {
+            print("error")
+    }
+    
     }
     
     func isWall(robot: ComplexRobotObject, direction: MazeDirection) -> Bool {
