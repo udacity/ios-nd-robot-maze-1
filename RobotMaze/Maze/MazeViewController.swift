@@ -60,7 +60,8 @@ class MazeViewController: UIViewController {
     
     func addControlConter() {
         let controlCenter = ControlCenter()
-        controlCenter.cellsInTheGrid = mazeController.cellModels
+        controlCenter.mazeController = mazeController
+        //controlCenter.cellsInTheGrid = mazeController.cellModels
         mazeController.controlCenter = controlCenter
     }
     

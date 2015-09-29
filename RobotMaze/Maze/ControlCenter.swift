@@ -9,60 +9,61 @@ import UIKit
 
 class ControlCenter {
     
-    var cellsInTheGrid: [[MazeCellModel]]!
+    //var cellsInTheGrid: [[MazeCellModel]]!
+    var mazeController: MazeController!
     
     func moveComplexRobot(robot: ComplexRobotObject) {
         
-        let wallInfo = self.checkWalls(robot)
-        
-        let isThreeWayJunction = self.isJunction(wallInfo.numberOfWalls)
+//        let wallInfo = self.checkWalls(robot)
+//        
+//        let isThreeWayJunction = self.isJunction(wallInfo.numberOfWalls)
         let isWall = self.isWall(robot, direction: robot.direction)
-        let isDeadEnd =  self.isDeadEnd(wallInfo.numberOfWalls)
-        let isTwoWayPath = !isDeadEnd && !isThreeWayJunction
+//        let isDeadEnd =  self.isDeadEnd(wallInfo.numberOfWalls)
+//        let isTwoWayPath = !isDeadEnd && !isThreeWayJunction
         
         // Dead End
-        if isDeadEnd {
-            if isWall {
-                robot.rotateRight()
-            } else {
-                robot.move()
-            }
-        }
+//        if isDeadEnd {
+//            if isWall {
+//                robot.rotateRight()
+//            } else {
+//                robot.move()
+//            }
+//        }
         
         // Junction: Two types
         // Type 1: Junction with a wall in front of you
-        if isThreeWayJunction && isWall {
-            // don't go back the way you came
-            // decision: right or left
-            randomlyRotateRightOrLeft(robot)
-        }
-        
-        // Type 2: Junction with an option to go straight or turn
-        else if isThreeWayJunction && !isWall {
-            // don't go back the way you came
-            // decision: straight or rotate
-            continueStraightOrRotate(robot, wallInfo: wallInfo)
-        }
-        
-        // TwoWayPath: Turn
-        else if isTwoWayPath && isWall {
-            turnTowardClearPath(robot, wallInfo: wallInfo)
-        }
-        
-        // TwoWayPath: Straightaway
-        else if isTwoWayPath && !isWall {
-            robot.move()
-        }
-        
-        else {
-            print("error")
-    }
+//        if isThreeWayJunction && isWall {
+//            // don't go back the way you came
+//            // decision: right or left
+//            randomlyRotateRightOrLeft(robot)
+//        }
+//        
+//        // Type 2: Junction with an option to go straight or turn
+//        else if isThreeWayJunction && !isWall {
+//            // don't go back the way you came
+//            // decision: straight or rotate
+//            continueStraightOrRotate(robot, wallInfo: wallInfo)
+//        }
+//        
+//        // TwoWayPath: Turn
+//        else if isTwoWayPath && isWall {
+//            turnTowardClearPath(robot, wallInfo: wallInfo)
+//        }
+//        
+//        // TwoWayPath: Straightaway
+//        else if isTwoWayPath && !isWall {
+//            robot.move()
+//        }
+//        
+//        else {
+//            print("error")
+//    }
     
     }
     
     func isWall(robot: ComplexRobotObject, direction: MazeDirection) -> Bool {
         
-        let cell = self.cellsInTheGrid[robot.location.y][robot.location.x]
+        let cell = mazeController.currentCell(robot)
         
         var isWall: Bool = false
         
@@ -105,31 +106,28 @@ class ControlCenter {
 
     func checkWalls(robot:ComplexRobotObject) -> (up: Bool, right: Bool, down: Bool, left: Bool, numberOfWalls: Int) {
         var numberOfWalls = 0
+        let cell = mazeController.currentCell(robot)
         
         // check up
-        var direction = MazeDirection(rawValue: 0)
-        let isWallUp = isWall(robot, direction: direction!)
+        let isWallUp = cell.top
         if isWallUp {
             numberOfWalls++
         }
         
         // check right
-        direction = .Right
-        let isWallRight = isWall(robot, direction: direction!)
+        let isWallRight = cell.right
         if isWallRight {
             numberOfWalls++
         }
 
         // check down
-        direction = .Down
-        let isWallDown = isWall(robot, direction:direction!)
+        let isWallDown = cell.bottom
         if isWallDown {
             numberOfWalls++
         }
         
         // check left
-        direction = .Left
-        let isWallLeft = isWall(robot, direction:direction!)
+        let isWallLeft = cell.left
         if isWallLeft {
            numberOfWalls++
         }

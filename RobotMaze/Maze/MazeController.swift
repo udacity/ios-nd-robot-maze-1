@@ -249,3 +249,15 @@ extension MazeController: MazeViewDelegate {
         return (cellModels.first != nil) ? cellModels.first!.count : 0
     }
 }
+
+// MARK: - Random Mouse Methods
+
+extension MazeController {
+
+    func currentCell(robot: ComplexRobotObject) -> MazeCellModel {
+        let cell = self.cellModels[robot.location.y][robot.location.x]
+        return cell
+    }
+
+
+}
