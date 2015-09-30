@@ -13,9 +13,10 @@ class ControlCenter {
 
     func moveComplexRobot(robot: ComplexRobotObject) {
         
-        let isWall = self.isWall(robot, direction: robot.direction)
+        //let isWall = self.isWall(robot, direction: robot.direction)
         let wallInfo = checkWalls(robot)
-        print(wallInfo)
+        let isThreeWayJunction = (wallInfo.numberOfWalls == 1)
+        print(isThreeWayJunction)
     }
     
     func isWall(robot: ComplexRobotObject, direction: MazeDirection) -> Bool {
