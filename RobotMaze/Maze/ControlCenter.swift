@@ -18,6 +18,13 @@ class ControlCenter {
 //        
 //        let isThreeWayJunction = self.isJunction(wallInfo.numberOfWalls)
         let isWall = self.isWall(robot, direction: robot.direction)
+        
+        if isWall {
+            robot.rotateRight()
+        } else {
+            robot.move()
+        }
+        
 //        let isDeadEnd =  self.isDeadEnd(wallInfo.numberOfWalls)
 //        let isTwoWayPath = !isDeadEnd && !isThreeWayJunction
         
