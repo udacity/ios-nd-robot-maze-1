@@ -16,7 +16,9 @@ class ControlCenter {
         //let isWall = self.isWall(robot, direction: robot.direction)
         let wallInfo = checkWalls(robot)
         let isThreeWayJunction = (wallInfo.numberOfWalls == 1)
-        print(isThreeWayJunction)
+        
+        //TODO: define isTwoWayPath
+        //TODO: define isDeadEnd
     }
     
     func isWall(robot: ComplexRobotObject, direction: MazeDirection) -> Bool {
@@ -62,19 +64,19 @@ class ControlCenter {
             numberOfWalls++
         }
         
-        // TODO: Check down
+        // Check bottom
         let isWallDown = cell.bottom
         if isWallDown {
             numberOfWalls++
         }
         
-        // TODO: Check left
+        // Check left
         let isWallLeft = cell.left
         if isWallLeft {
             numberOfWalls++
         }
         
-        // TODO: Return a tuple representing the bools for top, right, down & left, and the number of walls
+        // Return a tuple representing the bools for top, right, down & left, and the number of walls
         return (isWallUp, isWallRight, isWallDown, isWallLeft, numberOfWalls)
 
     }
