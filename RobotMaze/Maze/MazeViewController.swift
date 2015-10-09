@@ -65,13 +65,6 @@ class MazeViewController: UIViewController {
         mazeController.controlCenter = controlCenter
     }
     
-    
-//    func addSimpleRobot() {
-//        let simpleRobot = SimpleRobotObject(location: MazeLocation(x: 3, y: 2), direction: MazeDirection.Up, imagePath: "robot.png")
-//        mazeController.addMazeObject(simpleRobot)
-//        mazeController.controlCenter.moveSimpleRobot(simpleRobot)
-//    }
-    
     func addComplexRobot() {
         let randomx = Int(arc4random() % 7)
         let randomy = Int(arc4random() % 5)
