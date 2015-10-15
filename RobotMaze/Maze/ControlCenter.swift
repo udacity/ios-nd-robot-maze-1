@@ -112,7 +112,7 @@ class ControlCenter {
         
         //Step 4b
         //TODO: Tell the robot which way to turn toward the clear path
-//        if robot.direction == .Left && wallInfo.bottom {
+//        if robot.direction == .Left && wallInfo.down {
 //            robot.rotateRight()
 //        } else if robot.direction == .Up && wallInfo.left {
 //            robot.rotateRight()
