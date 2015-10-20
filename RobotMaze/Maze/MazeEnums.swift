@@ -17,3 +17,4 @@ enum MazeDirection: Int {
 enum RotateDirection: Int {
     case Left = 0, Right, None
 }
+

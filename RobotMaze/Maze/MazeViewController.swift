@@ -34,7 +34,6 @@ class MazeViewController: UIViewController {
         
         addControlConter()
         addComplexRobot()
-        //addSimpleRobot()
         addStar()
     }
 
