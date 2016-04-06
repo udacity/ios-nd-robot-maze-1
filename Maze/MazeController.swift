@@ -67,8 +67,9 @@ class MazeController {
     }
     
     // MARK: Adding Maze Objects
-    
-    func addMazeObject(var object: MazeObject) {
+    func addMazeObject(obj: MazeObject) {
+        
+        var object = obj
         
         if object.location.x < 0 || object.location.x >= mazeView.columns() {
             print("MazeObject not added, MazeLocation not in bounds")
@@ -119,8 +120,10 @@ class MazeController {
         }
     }
     
-    func moveObjectToLocation(var object: MazeObject, newLocation: MazeLocation, completionHandler: () -> Void) {
+    func moveObjectToLocation(obj: MazeObject, newLocation: MazeLocation, completionHandler: () -> Void) {
 
+        var object = obj
+        
         let newFrame = self.mazeView.cellForRow(newLocation.y, column: newLocation.x).frame
         
         CATransaction.begin()
