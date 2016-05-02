@@ -82,7 +82,7 @@ class MazeActor: MazeObject {
         let dx = (moveDirection == MazeDirection.Right) ? 1 : ((moveDirection == MazeDirection.Left) ? -1 : 0)
         let dy = (moveDirection == MazeDirection.Up) ? -1 : ((moveDirection == MazeDirection.Down) ? 1 : 0)
         
-        for var i = 0; i < moves; ++i {
+        for _ in 0 ..< moves {
             let move = MazeMove(coords: Move(dx: dx, dy: dy), rotateDirection: .None)
             enqueueMove(move, completionHandler: completionHandler)
         }
