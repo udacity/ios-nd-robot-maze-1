@@ -33,7 +33,7 @@ private class SimpleEnemy: MazeActor {
         } else if self.fromLocation.x > self.toLocation.x {
             direction = MazeDirection.Left
         } else {
-            assertionFailure("Direction must be on at least one same axis")
+            fatalError("Direction must be on at least one same axis")
         }
         
         super.init(location: fromLocation, direction: direction, imagePath: imagePath)

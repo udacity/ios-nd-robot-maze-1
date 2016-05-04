@@ -25,7 +25,7 @@ struct MazeMove {
             case (1, 0):
                 return .Right
             default:
-                assert(false, "Invalid MazeDirection, Invalid RobotMove")
+                fatalError("Invalid maze direction and robot move")
             }
         }
     }
