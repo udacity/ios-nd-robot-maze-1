@@ -17,7 +17,7 @@ class MazeViewController: UIViewController {
     @IBOutlet weak var mazeView: MazeView!
     private var mazeController: MazeController!
     
-    // MARK: Lifecycle
+    // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()        

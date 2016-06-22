@@ -67,6 +67,7 @@ class MazeController {
     }
     
     // MARK: Adding Maze Objects
+    
     func addMazeObject(obj: MazeObject) {
         
         var object = obj
