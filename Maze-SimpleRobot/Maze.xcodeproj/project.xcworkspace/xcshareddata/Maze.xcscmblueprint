@@ -1,0 +1,28 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "36EEE8AD7A887D53B5B12C67C9E0281AF5379F16",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "36EEE8AD7A887D53B5B12C67C9E0281AF5379F16" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "31EA2A1B-E7B8-4FB7-8A5C-0A579E999198",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "36EEE8AD7A887D53B5B12C67C9E0281AF5379F16" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Maze",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Maze.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/udacity\/beginning-ios-robot-maze.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "36EEE8AD7A887D53B5B12C67C9E0281AF5379F16"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/udacity\/beginning-ios-robot-maze",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "36EEE8AD7A887D53B5B12C67C9E0281AF5379F16"
+    }
+  ]
+}

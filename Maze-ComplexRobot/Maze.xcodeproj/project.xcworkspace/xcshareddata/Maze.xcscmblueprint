@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "36EEE8AD7A887D53B5B12C67C9E0281AF5379F16+++125D47E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "36EEE8AD7A887D53B5B12C67C9E0281AF5379F16+++71048BB" : 0,
+    "36EEE8AD7A887D53B5B12C67C9E0281AF5379F16+++125D47E" : 0,
+    "36EEE8AD7A887D53B5B12C67C9E0281AF5379F16+++2F92876" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3AB7AF50-1548-4A74-9432-28CABA9AC688",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "36EEE8AD7A887D53B5B12C67C9E0281AF5379F16+++71048BB" : "",
+    "36EEE8AD7A887D53B5B12C67C9E0281AF5379F16+++125D47E" : "Maze-ComplexRobot\/",
+    "36EEE8AD7A887D53B5B12C67C9E0281AF5379F16+++2F92876" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Maze",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Maze.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/udacity\/beginning-ios-robot-maze.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "36EEE8AD7A887D53B5B12C67C9E0281AF5379F16+++125D47E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/udacity\/beginning-ios-robot-maze",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "36EEE8AD7A887D53B5B12C67C9E0281AF5379F16+++2F92876"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/udacity\/beginning-ios-robot-maze.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "36EEE8AD7A887D53B5B12C67C9E0281AF5379F16+++71048BB"
+    }
+  ]
+}
