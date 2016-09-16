@@ -15,7 +15,7 @@ class MazeViewController: UIViewController {
     // MARK: Properties
     
     @IBOutlet weak var mazeView: MazeView!
-    private var mazeController: MazeController!
+    fileprivate var mazeController: MazeController!
     
     // MARK: Lifecycle
     

@@ -14,7 +14,7 @@ class MazeController {
     
     // MARK: Properties
     
-    private var cellModels: [[MazeCellModel]]!
+    fileprivate var cellModels: [[MazeCellModel]]!
     var mazeView: MazeView!
     var mazeObjects = [MazeObject]()
     let moveDuration = 0.6
@@ -33,7 +33,7 @@ class MazeController {
         
         var models = [[MazeCellModel]]()
         
-        if let path = Bundle.main().pathForResource(filename, ofType: "plist") {
+        if let path = Bundle.main.path(forResource: filename, ofType: "plist") {
             if let dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
                 
                 for row in dict["cellData"] as! [AnyObject] {
@@ -121,7 +121,7 @@ class MazeController {
         }
     }
     
-    func moveObjectToLocation(_ obj: MazeObject, newLocation: MazeLocation, completionHandler: () -> Void) {
+    func moveObjectToLocation(_ obj: MazeObject, newLocation: MazeLocation, completionHandler: @escaping () -> Void) {
 
         var object = obj
         
@@ -156,16 +156,16 @@ class MazeController {
         CATransaction.commit()
     }
     
-    func rotateObject(_ object: MazeObject, direction: RotateDirection, completionHandler: () -> Void) {
+    func rotateObject(_ object: MazeObject, direction: RotateDirection, completionHandler: @escaping () -> Void) {
         
         UIView.animate(withDuration: moveDuration, animations: { () -> Void in
-            object.view.transform = object.view.transform.rotate((direction == RotateDirection.right) ? CGFloat(M_PI_2) : CGFloat(-M_PI_2))
+            object.view.transform = object.view.transform.rotated(by: (direction == RotateDirection.right) ? CGFloat(M_PI_2) : CGFloat(-M_PI_2))
             }) { _ in
                 completionHandler()
         }
     }
     
-    private func animateObjectNotMovingToLocation(_ object: MazeObject, direction: MazeDirection, newLocation: MazeLocation, completionHandler: () -> Void) {
+    fileprivate func animateObjectNotMovingToLocation(_ object: MazeObject, direction: MazeDirection, newLocation: MazeLocation, completionHandler: @escaping () -> Void) {
         
         if object is ComplexRobotObject {
             let robot = object as! ComplexRobotObject
@@ -215,7 +215,7 @@ class MazeController {
     
     // MARK: Convenience
     
-    private func objectCanMoveToLocation(_ object: MazeObject, move: MazeMove) -> Bool {
+    fileprivate func objectCanMoveToLocation(_ object: MazeObject, move: MazeMove) -> Bool {
         
         let cell = cellModels[object.location.y][object.location.x]
         
