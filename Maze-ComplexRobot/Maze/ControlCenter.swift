@@ -8,7 +8,7 @@
 
 class ControlCenter {
         
-    func moveComplexRobot(_ robot: ComplexRobot) {
+    func moveComplexRobot(robot: ComplexRobot) {
         
         robot.move()
 

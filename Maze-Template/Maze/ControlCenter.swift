@@ -8,11 +8,11 @@
 
 class ControlCenter {
     
-    func moveSimpleRobot(_ robot: SimpleRobot) {
+    func moveSimpleRobot(robot: SimpleRobot) {
         
     }
  
-    func moveComplexRobot(_ robot: ComplexRobot) {
+    func moveComplexRobot(robot: ComplexRobot) {
         
     }
 }

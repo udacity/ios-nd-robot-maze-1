@@ -8,7 +8,7 @@
 
 class ControlCenter {
     
-    func moveSimpleRobot(_ robot: SimpleRobot) {
+    func moveSimpleRobot(robot: SimpleRobot) {
         
         robot.moveUp()
         
